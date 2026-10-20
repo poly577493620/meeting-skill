@@ -1,0 +1,31 @@
+# 任务一官方运行（Claude Code）实际运行提示词
+
+本文件保存课题二任务一在 Claude Code 端本次重新生成官方输出 `outputs/task1-claude-code-official.md` 时实际使用的运行指令要点，作为证据留存，非官方会议转写输入。
+
+## 运行目标
+
+根据修正后的 Skill（meeting-minutes-supervisor）重新处理官方测试输入 `testdata/task1-official-transcript.md`，覆盖 `outputs/task1-claude-code-official.md`。
+
+## 关键处理约束（实际执行）
+
+1. VIP 客户预审机制 SOP 草案保留明确责任人、协同方、截止时间；晨会复盘日期可保留。
+2. 解决 API 接口熔断风险与提交高并发压力测试报告作为两个不同层次的事项：解决熔断风险列为独立行动项时，不得补写原文未明确给出的精确截止时间；压测报告保留明确截止时间。
+3. 起草并发布第三季度运营风控与红线管理指引保留明确截止时间。
+4. 安排线上宣贯会作为单独行动项：责任人按原文保留，截止时间写"未明确"，不得写成"在月底前完成线上宣贯会"，不得把"安排"改写成"完成"。
+5. 打印机报修为单独行动项，无明确截止时间和验收点时写"未明确"。
+
+## 通用合规要求
+
+- 客户姓名脱敏、精确融资金额区间化、秘密项目代号星号化；
+- 保留内部责任人姓名和明确日期；
+- 不新增业务建议；
+- 不把一般讨论写成明确决议；
+- 不展示思维过程或含敏感信息的中间草稿。
+
+## 实际命令
+
+```powershell
+python -X utf8 .claude/skills/meeting-minutes-supervisor/scripts/check_minutes.py outputs/task1-claude-code-official.md
+```
+
+退出码 0，PASS。

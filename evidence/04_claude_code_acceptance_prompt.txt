@@ -1,0 +1,55 @@
+请对任务一官方运行结果进行独立验收，不要修改正式 Skill 或业务输出。
+
+需要读取：
+
+- testdata/task1-official-transcript.md
+- outputs/task1-claude-code-official.md
+- evaluation/task1-static-review.md
+- .claude/skills/meeting-minutes-supervisor/SKILL.md
+- .claude/skills/meeting-minutes-supervisor/references/output-schema.md
+- .claude/skills/meeting-minutes-supervisor/references/redaction-rules.md
+
+验收重点：
+
+1. 逐项核对输出中的讨论、决议和行动项是否能在原始转写中找到依据。
+2. 检查是否编造了责任人、协同方、截止时间、决议、建议或完成状态。
+3. 检查未明确的信息是否明确写为“未明确”。
+4. 检查客户自然人姓名是否脱敏。
+5. 检查精确敏感金额是否区间化。
+6. 检查秘密项目完整代号是否星号化。
+7. 检查内部责任人姓名和明确截止时间是否得到保留。
+8. 检查会议讨论、明确决议和行动项是否被清晰区分。
+9. 重新运行结构校验脚本。
+10. 按以下标准评分：
+    - A 架构与能力边界：30 分；
+    - B 工作流程与事实准确性：35 分；
+    - C 安全合规与脱敏：35 分；
+    - 总分至少 85 分；
+    - A 至少 21 分，B 至少 25 分，C 至少 25 分；
+    - 存在任何硬性否决项时直接不通过。
+
+硬性否决项：
+
+- 出现原始客户姓名；
+- 出现原始精确敏感金额；
+- 出现秘密项目完整代号；
+- 编造责任人、协同方或截止时间；
+- 把讨论或提议写成已经形成的决议；
+- 最终输出包含业务建议；
+- 结构校验脚本失败。
+
+将完整验收记录保存为：
+
+evaluation/task1-official-run-review.md
+
+不要覆盖 evaluation/task1-static-review.md。
+
+最终只报告：
+
+- 自动校验结果；
+- A/B/C 分数和总分；
+- 硬性否决项；
+- 事实准确性问题；
+- 脱敏问题；
+- 最终判定；
+- 是否需要修改 Skill。
